@@ -34,12 +34,9 @@ function onInput() {
            <p><span>Languages:</span> ${data[0].languages.map(el => el.name).join(', ')}</p> `;} 
            
            else {
-           for (let i = 0; i < data.length; i += 1) {
-            countryList.innerHTML += `<li style = "display:flex;align-items:center"><img style = "margin-right:10px"src="${data[i].flags.svg}" width = '30'><h1>${data[i].name}</h1></li>`;
-          }
+            countryList.innerHTML = data.map(item => `<li style = "display:flex;align-items:center"><img style = "margin-right:10px"src="${item.flags.svg}" width = '30'><h1>${item.name}</h1></li>`).join('');
         }
       })
-      // .catch((e) => console.log(e))
       .catch(() => Notiflix.Notify.failure('Oops, there is no country with that name'));
   }
 }
